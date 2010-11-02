@@ -1,0 +1,737 @@
+create database clinica;
+SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
+
+SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
+
+SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL';
+
+
+
+
+CREATE SCHEMA IF NOT EXISTS `Clinica` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci ;
+USE `Clinica`;
+
+
+
+
+
+
+
+
+-- -----------------------------------------------------
+-- Table `Clinica`.`PERFIL`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `Clinica`.`PERFIL` ;
+
+
+
+CREATE  TABLE IF NOT EXISTS `Clinica`.`PERFIL` (
+  
+`idperfil` INT NOT NULL AUTO_INCREMENT ,
+  
+`nombreperfil` VARCHAR(45) NOT NULL ,
+ 
+
+
+PRIMARY KEY (`idperfil`) )
+ENGINE = InnoDB;
+
+
+
+
+
+
+
+
+
+-- -----------------------------------------------------
+-- Table `Clinica`.`MODULO`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `Clinica`.`MODULO` ;
+
+
+
+CREATE  TABLE IF NOT EXISTS `Clinica`.`MODULO` (
+  
+`idmodulo` INT NOT NULL AUTO_INCREMENT ,
+  
+`nombremodulo` VARCHAR(45) NOT NULL ,
+  
+
+
+PRIMARY KEY (`idmodulo`) )
+ENGINE = InnoDB;
+
+
+
+
+
+
+
+
+-- -----------------------------------------------------
+-- Table `Clinica`.`TURNO`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `Clinica`.`TURNO` ;
+
+
+
+CREATE  TABLE IF NOT EXISTS `Clinica`.`TURNO` (
+  
+`idturno` INT NOT NULL AUTO_INCREMENT ,
+  
+`nombreturno` VARCHAR(45) NOT NULL ,
+  
+
+
+PRIMARY KEY (`idturno`) )
+ENGINE = InnoDB;
+
+
+
+
+
+
+
+
+
+
+-- -----------------------------------------------------
+-- Table `Clinica`.`EMPLEADO`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `Clinica`.`EMPLEADO` ;
+
+
+
+CREATE  TABLE IF NOT EXISTS `Clinica`.`EMPLEADO` (
+  
+`cedulaempleado` INT NOT NULL AUTO_INCREMENT ,
+  
+`nombreempleado` VARCHAR(45) NOT NULL ,
+  
+`apellidoempleado` VARCHAR(45) NOT NULL ,
+  
+`direccionempleado` VARCHAR(45) NOT NULL ,
+  
+`fechanempleado` DATE NOT NULL ,
+  
+`contrasenaempleado` VARCHAR(45) NOT NULL ,
+  
+`telefonoempleado` BIGINT NOT NULL ,
+  
+`tipoempleado` INT NOT NULL ,
+  
+`sueldoempleado` INT NULL ,
+  
+`costophoraempleado` INT NULL ,
+  
+`idturno` INT NULL ,
+  
+
+PRIMARY KEY (`cedulaempleado`) ,
+  
+
+
+CONSTRAINT `fk_EMPLEADO_TURNO`
+    FOREIGN KEY (`idturno` )
+    REFERENCES `Clinica`.`TURNO` (`idturno` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+CREATE INDEX fk_EMPLEADO_TURNO ON `Clinica`.`EMPLEADO` (`idturno` ASC) ;
+
+
+
+
+
+
+
+
+
+
+
+
+-- -----------------------------------------------------
+-- Table `Clinica`.`PERFILMODULO`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `Clinica`.`PERFILMODULO` ;
+
+
+
+CREATE  TABLE IF NOT EXISTS `Clinica`.`PERFILMODULO` (
+  
+`idperfil` INT NOT NULL ,
+  
+`idmodulo` INT NOT NULL ,
+  
+`agregarpm` BOOLEAN NULL DEFAULT  '0',
+  
+`modificarpm` BOOLEAN NULL DEFAULT  '0',
+  
+`eliminarpm` BOOLEAN NULL DEFAULT  '0',
+  
+`consultarpm` BOOLEAN NULL DEFAULT  '0',
+  
+`cedulaempleado` INT NOT NULL ,
+ 
+ 
+PRIMARY KEY (`idperfil`, `idmodulo`, `cedulaempleado`) ,
+
+
+  
+CONSTRAINT `fk_PERFIL_has_MODULO_PERFIL`
+    FOREIGN KEY (`idperfil` )
+    REFERENCES `Clinica`.`PERFIL` (`idperfil` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  
+CONSTRAINT `fk_PERFIL_has_MODULO_MODULO`
+    FOREIGN KEY (`idmodulo` )
+    REFERENCES `Clinica`.`MODULO` (`idmodulo` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  
+CONSTRAINT `fk_PERFILMODULO_EMPLEADO`
+   FOREIGN KEY (`cedulaempleado` )
+  REFERENCES `Clinica`.`EMPLEADO` (`cedulaempleado` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION) 
+ENGINE = InnoDB;
+
+
+CREATE INDEX fk_PERFIL_has_MODULO_PERFIL ON `Clinica`.`PERFILMODULO` (`idperfil` ASC) ;
+
+
+CREATE INDEX fk_PERFIL_has_MODULO_MODULO ON `Clinica`.`PERFILMODULO` (`idmodulo` ASC) ;
+
+
+CREATE INDEX fk_PERFILMODULO_EMPLEADO ON `Clinica`.`PERFILMODULO` (`cedulaempleado` ASC) ;
+
+
+
+
+
+
+
+
+
+
+
+-- -----------------------------------------------------
+-- Table `Clinica`.`PACIENTE`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `Clinica`.`PACIENTE` ;
+
+
+
+CREATE  TABLE IF NOT EXISTS `Clinica`.`PACIENTE` (
+  
+`cedulapaciente` INT NOT NULL AUTO_INCREMENT ,
+  
+`nombrepaciente` VARCHAR(45) NOT NULL ,
+  
+`apellidopaciente` VARCHAR(45) NOT NULL ,
+  
+`direccionpaciente` VARCHAR(45) NOT NULL ,
+  
+`telefonopaciente` BIGINT NOT NULL ,
+  
+`fechanpaciente` DATE NOT NULL ,
+  
+
+PRIMARY KEY (`cedulapaciente`) )
+ENGINE = InnoDB;
+
+
+
+
+
+
+
+
+
+
+-- -----------------------------------------------------
+-- Table `Clinica`.`OPERACION`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `Clinica`.`OPERACION` ;
+
+
+
+CREATE  TABLE IF NOT EXISTS `Clinica`.`OPERACION` (
+  
+`idoperacion` INT NOT NULL AUTO_INCREMENT ,
+  
+`pabellonoperacion` CHAR(1) NULL ,
+  
+`fechaoperacion` DATE NULL ,
+  
+`horaoperacion` TIME NULL ,
+  
+`statusoperacion` VARCHAR(45) NOT NULL ,
+  
+`cedulapaciente` INT NOT NULL ,
+  
+`fechapreoperacion` DATE NOT NULL ,
+  
+`totalpreoperacion` INT NOT NULL ,
+  
+`observacionoperacion` VARCHAR(45) NULL ,
+  
+
+PRIMARY KEY (`idoperacion`) ,
+  
+
+
+CONSTRAINT `fk_OPERACION_PACIENTE`
+ FOREIGN KEY (`cedulapaciente` )
+    REFERENCES `Clinica`.`PACIENTE` (`cedulapaciente` )
+ ON DELETE NO ACTION
+ ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+CREATE INDEX fk_OPERACION_PACIENTE ON `Clinica`.`OPERACION` (`cedulapaciente` ASC) ;
+
+
+
+
+
+
+
+
+
+
+
+-- -----------------------------------------------------
+-- Table `Clinica`.`PERNOCTA`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `Clinica`.`PERNOCTA` ;
+
+
+
+CREATE  TABLE IF NOT EXISTS `Clinica`.`PERNOCTA` (
+  
+`idpernocta` INT NOT NULL AUTO_INCREMENT ,
+  
+`horaentradapernocta` TIME NULL ,
+ 
+`horasalidapernocta` TIME NULL ,
+  
+`fechasalidapernocta` DATE NULL ,
+  
+`recargopernocta` VARCHAR(45) NULL ,
+  
+`cedulaempleado` INT NOT NULL ,
+  
+`idoperacion` INT NOT NULL ,
+  
+
+PRIMARY KEY (`idpernocta`) ,
+ 
+
+ 
+CONSTRAINT `fk_PERNOCTA_EMPLEADO`
+    FOREIGN KEY (`cedulaempleado` )
+    REFERENCES `Clinica`.`EMPLEADO` (`cedulaempleado` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  
+CONSTRAINT `fk_PERNOCTA_OPERACION`
+    FOREIGN KEY (`idoperacion` )
+  REFERENCES `Clinica`.`OPERACION` (`idoperacion` )
+ ON DELETE NO ACTION
+  ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+CREATE INDEX fk_PERNOCTA_EMPLEADO ON `Clinica`.`PERNOCTA` (`cedulaempleado` ASC) ;
+
+
+CREATE INDEX fk_PERNOCTA_OPERACION ON `Clinica`.`PERNOCTA` (`idoperacion` ASC) ;
+
+
+
+
+
+
+
+
+
+
+
+
+-- -----------------------------------------------------
+-- Table `Clinica`.`INSUMO`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `Clinica`.`INSUMO` ;
+
+
+
+CREATE  TABLE IF NOT EXISTS `Clinica`.`INSUMO` (
+  
+`idinsumo` INT NOT NULL AUTO_INCREMENT ,
+  
+`nombreinsumo` VARCHAR(45) NOT NULL ,
+  
+`descripcioninsumo` VARCHAR(45) NOT NULL ,
+  
+`tipoinsumo` VARCHAR(45) NOT NULL ,
+  
+`cantidadinsumo` INT NULL ,
+  
+
+
+PRIMARY KEY (`idinsumo`) )
+ENGINE = InnoDB;
+
+
+
+
+
+
+
+
+
+
+
+
+-- -----------------------------------------------------
+-- Table `Clinica`.`COSTOE`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `Clinica`.`COSTOE` ;
+
+
+
+CREATE  TABLE IF NOT EXISTS `Clinica`.`COSTOE` (
+  
+`idcostoe` INT NOT NULL AUTO_INCREMENT ,
+  
+`descripcioncostoe` VARCHAR(45) NOT NULL ,
+  
+`montocostoe` INT NOT NULL ,
+  
+
+PRIMARY KEY (`idcostoe`) )
+ENGINE = InnoDB;
+
+
+
+
+
+
+
+
+
+
+
+-- -----------------------------------------------------
+-- Table `Clinica`.`TIEMPOQ`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `Clinica`.`TIEMPOQ` ;
+
+
+
+CREATE  TABLE IF NOT EXISTS `Clinica`.`TIEMPOQ` (
+  
+`idtiempoq` INT NOT NULL AUTO_INCREMENT ,
+  
+`montotiempoq` INT NOT NULL ,
+  
+`iniciotiempoq` TIME NULL ,
+  
+`fintiempoq` TIME NULL ,
+  
+
+PRIMARY KEY (`idtiempoq`) )
+ENGINE = InnoDB;
+
+
+
+
+
+
+
+-- -----------------------------------------------------
+-- Table `Clinica`.`TRATAMIENTO`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `Clinica`.`TRATAMIENTO` ;
+
+
+
+
+CREATE  TABLE IF NOT EXISTS `Clinica`.`TRATAMIENTO` (
+  
+`idtratamiento` INT NOT NULL AUTO_INCREMENT ,
+  
+`descripciontratamiento` VARCHAR(45) NOT NULL ,
+  
+
+
+PRIMARY KEY (`idtratamiento`) )
+ENGINE = InnoDB;
+
+
+
+
+
+
+
+
+
+
+-- -----------------------------------------------------
+-- Table `Clinica`.`KITBASICO`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `Clinica`.`KITBASICO` ;
+
+
+
+
+CREATE  TABLE IF NOT EXISTS `Clinica`.`KITBASICO` (
+  
+`idinsumo` INT NOT NULL ,
+  
+`idoperacion` INT NOT NULL ,
+  
+`cantidadkit` INT NOT NULL ,
+  
+
+PRIMARY KEY (`idinsumo`, `idoperacion`) ,
+  
+
+
+CONSTRAINT `fk_INSUMO_has_OPERACION_INSUMO`
+    FOREIGN KEY (`idinsumo` )
+    REFERENCES `Clinica`.`INSUMO` (`idinsumo` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  
+CONSTRAINT `fk_INSUMO_has_OPERACION_OPERACION`
+ FOREIGN KEY (`idoperacion` )
+ REFERENCES `Clinica`.`OPERACION` (`idoperacion` )
+ ON DELETE NO ACTION
+ ON UPDATE NO ACTION)
+ ENGINE = InnoDB;
+
+
+CREATE INDEX fk_INSUMO_has_OPERACION_INSUMO ON `Clinica`.`KITBASICO` (`idinsumo` ASC) ;
+
+
+CREATE INDEX fk_INSUMO_has_OPERACION_OPERACION ON `Clinica`.`KITBASICO` (`idoperacion` ASC) ;
+
+
+
+
+
+
+
+
+
+
+
+
+-- -----------------------------------------------------
+-- Table `Clinica`.`TIEMPOQOP`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `Clinica`.`TIEMPOQOP` ;
+
+
+
+CREATE  TABLE IF NOT EXISTS `Clinica`.`TIEMPOQOP` (
+  
+`idtiempoq` INT NOT NULL ,
+  
+`idoperacion` INT NOT NULL ,
+  
+
+PRIMARY KEY (`idtiempoq`, `idoperacion`) ,
+
+
+  
+CONSTRAINT `fk_TIEMPOQ_has_OPERACION_TIEMPOQ`
+    FOREIGN KEY (`idtiempoq` )  REFERENCES `Clinica`.`TIEMPOQ` (`idtiempoq` )
+ ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+  
+CONSTRAINT `fk_TIEMPOQ_has_OPERACION_OPERACION`
+    FOREIGN KEY (`idoperacion` )
+    REFERENCES `Clinica`.`OPERACION` (`idoperacion` )
+  ON DELETE NO ACTION
+ ON UPDATE NO ACTION) 
+ENGINE = InnoDB;
+
+
+CREATE INDEX fk_TIEMPOQ_has_OPERACION_TIEMPOQ ON `Clinica`.`TIEMPOQOP` (`idtiempoq` ASC) ;
+
+
+CREATE INDEX fk_TIEMPOQ_has_OPERACION_OPERACION ON `Clinica`.`TIEMPOQOP` (`idoperacion` ASC) ;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-- -----------------------------------------------------
+-- Table `Clinica`.`EMPLEADOOP`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `Clinica`.`EMPLEADOOP` ;
+
+
+
+
+CREATE  TABLE IF NOT EXISTS `Clinica`.`EMPLEADOOP` (
+  
+`cedulaempleado` INT NOT NULL ,
+  
+`idoperacion` INT NOT NULL ,
+  
+
+PRIMARY KEY (`cedulaempleado`, `idoperacion`) ,
+
+
+  
+CONSTRAINT `fk_EMPLEADO_has_OPERACION_EMPLEADO`
+ FOREIGN KEY (`cedulaempleado` )
+ REFERENCES `Clinica`.`EMPLEADO` (`cedulaempleado` )
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+  
+CONSTRAINT `fk_EMPLEADO_has_OPERACION_OPERACION`
+    FOREIGN KEY (`idoperacion` )
+  REFERENCES `Clinica`.`OPERACION` (`idoperacion` )
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION) 
+ENGINE = InnoDB;
+
+
+CREATE INDEX fk_EMPLEADO_has_OPERACION_EMPLEADO ON `Clinica`.`EMPLEADOOP` (`cedulaempleado` ASC) ;
+
+
+CREATE INDEX fk_EMPLEADO_has_OPERACION_OPERACION ON `Clinica`.`EMPLEADOOP` (`idoperacion` ASC) ;
+
+
+
+
+
+
+
+
+
+-- -----------------------------------------------------
+-- Table `Clinica`.`CEOP`
+-- -----------------------------------------------------
+DROP TABLE IF EXISTS `Clinica`.`CEOP` ;
+
+
+
+CREATE  TABLE IF NOT EXISTS `Clinica`.`CEOP` (
+  
+`idoperacion` INT NOT NULL ,
+  
+`idcostoe` INT NOT NULL ,
+ 
+
+PRIMARY KEY (`idoperacion`, `idcostoe`) ,
+  
+
+
+CONSTRAINT `fk_OPERACION_has_COSTOE_OPERACION`
+    FOREIGN KEY (`idoperacion` )
+    REFERENCES `Clinica`.`OPERACION` (`idoperacion` )
+  ON DELETE NO ACTION
+  ON UPDATE NO ACTION,
+  
+CONSTRAINT `fk_OPERACION_has_COSTOE_COSTOE`
+    FOREIGN KEY (`idcostoe` )
+    REFERENCES `Clinica`.`COSTOE` (`idcostoe` )
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION) 
+ENGINE = InnoDB;
+
+
+CREATE INDEX fk_OPERACION_has_COSTOE_OPERACION ON `Clinica`.`CEOP` (`idoperacion` ASC) ;
+
+
+CREATE INDEX fk_OPERACION_has_COSTOE_COSTOE ON `Clinica`.`CEOP` (`idcostoe` ASC) ;
+
+
+
+
+
+-- -----------------------------------------------------
+-- Table `Clinica`.`OPERTRATAMIENTO`
+-- -----------------------------------------------------
+
+DROP TABLE IF EXISTS `Clinica`.`OPERTRATAMIENTO` ;
+
+
+
+
+CREATE  TABLE IF NOT EXISTS `Clinica`.`OPERTRATAMIENTO` (
+  
+`idtratamiento` INT NOT NULL ,
+  
+`idoperacion` INT NOT NULL ,
+  
+
+PRIMARY KEY (`idtratamiento`, `idoperacion`) ,
+  
+
+
+CONSTRAINT `fk_TRATAMIENTO_has_OPERACION_TRATAMIENTO`
+ FOREIGN KEY (`idtratamiento` )
+ REFERENCES `Clinica`.`TRATAMIENTO` (`idtratamiento` )
+ ON DELETE NO ACTION
+ ON UPDATE NO ACTION,
+  
+CONSTRAINT `fk_TRATAMIENTO_has_OPERACION_OPERACION`
+ FOREIGN KEY (`idoperacion` )
+ REFERENCES `Clinica`.`OPERACION` (`idoperacion` )
+ ON DELETE NO ACTION
+  ON UPDATE NO ACTION) 
+ENGINE = InnoDB;
+
+
+CREATE INDEX fk_TRATAMIENTO_has_OPERACION_TRATAMIENTO ON `Clinica`.`OPERTRATAMIENTO` (`idtratamiento` ASC) ;
+
+
+CREATE INDEX fk_TRATAMIENTO_has_OPERACION_OPERACION ON `Clinica`.`OPERTRATAMIENTO` (`idoperacion` ASC) ;
+
+
+
+
+
+
+SET SQL_MODE=@OLD_SQL_MODE;
+
+SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
+
+SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
+
+
