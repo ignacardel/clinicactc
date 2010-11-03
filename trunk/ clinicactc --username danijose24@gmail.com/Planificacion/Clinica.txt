@@ -391,7 +391,7 @@ CREATE  TABLE IF NOT EXISTS `Clinica`.`INSUMO` (
   
 `cantidadinsumo` INT NOT NULL ,
   
-`costoxunidad` INT NOT NULL ,
+`costoxunidad` FLOAT NOT NULL ,
 
 PRIMARY KEY (`idinsumo`) )
 ENGINE = InnoDB;
