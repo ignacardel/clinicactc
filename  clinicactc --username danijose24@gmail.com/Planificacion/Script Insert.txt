@@ -1,0 +1,302 @@
+INSERT INTO  `clinica`.`turno` (
+`idturno` ,
+`nombreturno`
+)
+VALUES 
+(NULL ,  'Diurno'), 
+(NULL ,  'Nocturno');
+
+
+
+
+
+
+
+INSERT INTO  `clinica`.`empleado` (
+`cedulaempleado` ,
+`nombreempleado` ,
+`apellidoempleado` ,
+`direccionempleado` ,
+`fechanempleado` ,
+`contrasenaempleado` ,
+`telefonoempleado` ,
+`tipoempleado` ,
+`sueldoempleado` ,
+`costophoraempleado` ,
+`idturno`
+)
+VALUES 
+('18213611',  'Daniel',  'Conde',  'Terrazas del Avila',  '1988-07-11',  '12345',  '2410461',  '1', NULL , NULL , NULL),
+('1',  'Ignacio',  'Cardenas',  'Chacao',  '1989-11-16',  '12345',  '2232343',  '1', NULL , NULL , NULL),
+('2',  'Solsire',  'Torres',  'Cumbres',  '1989-10-31',  '12345',  '2212333',  '1', NULL , NULL , NULL),
+('18000000',  'Pedro',  'Suarez',  'Chacaito',  '1983-03-06',  '12345',  '4123245',  '2', NULL , NULL , NULL),
+('18000001',  'Mario',  'Valencia',  'La Urbina',  '1980-09-14',  '12345',  '3245643',  '3', NULL , NULL , NULL),
+('18000002',  'Alejandra',  'Marcano',  'La trinidad',  '1981-12-10',  '12345',  '7873454',  '4', 1 , NULL , NULL),
+('18000003',  'Natalia',  'Gonzalez',  'El Llanito',  '1986-01-22',  '12345',  '2467945',  '5', 1 , NULL , NULL),
+('18000004',  'Jesus',  'Martinez',  'Las Mercedes',  '1983-02-15',  '12345',  '5628590',  '6', 2 , NULL , NULL),
+('18000005',  'Jesica',  'Pupilo',  'Santa Fe',  '1989-05-26',  '12345',  '8276894',  '7', NULL , 2 , NULL);
+
+
+
+
+
+
+INSERT INTO  `clinica`.`paciente` (
+`cedulapaciente` ,
+`nombrepaciente` ,
+`apellidopaciente` ,
+`direccionpaciente` ,
+`telefonopaciente` ,
+`fechanpaciente`
+)
+VALUES 
+('19000000',  'Carmen',  'Perez',  'El Rosal',  '536752',  '1971-03-09'), 
+('19000001',  'Maritza',  'Hernandez',  'Mariche',  '4326754',  '1979-04-16'),
+('19000002',  'Juana',  'Paredes',  'Los Dos Caminos',  '536752',  '1975-10-11'),
+('19000003',  'Joana',  'Rondon',  'Altamira',  '536752',  '1978-07-23'),
+('19000004',  'Claudia',  'Alvarado',  'El Marques',  '536752',  '1981-06-18');
+
+
+
+
+
+
+
+INSERT INTO  `clinica`.`tratamiento` (
+`idtratamiento` ,
+`descripciontratamiento`
+)
+VALUES 
+(NULL ,  'Lipoescultura'), 
+(NULL ,  'Aumento de Mamas'),
+(NULL ,  'Reducción y levantamiento mamario'),
+(NULL ,  'Aumento y levantamiento mamario'),
+(NULL ,  'Lifting Facial'),
+(NULL ,  'Blefaroplastia'),
+(NULL ,  'Levantamiento de frente'),
+(NULL ,  'Levantamiento de cejas'),
+(NULL ,  'Hilos Aptos'),
+(NULL ,  'Dermolipectomía'),
+(NULL ,  'Rinoplastia'),
+(NULL ,  'Aumento de Glúteos');
+
+
+
+
+
+
+
+
+
+INSERT INTO  `clinica`.`tiempoq` (
+`idtiempoq` ,
+`montotiempoq` ,
+`iniciotiempoq` ,
+`fintiempoq`
+)
+VALUES 
+(NULL ,  '2940',  '00:00:00',  '01:00:00'), 
+(NULL ,  '3300',  '01:00:00',  '02:00:00'),
+(NULL ,  '3840',  '02:00:00',  '03:00:00'),
+(NULL ,  '4840',  '03:00:00',  '04:00:00'),
+(NULL ,  '5550',  '04:00:00',  '05:00:00');
+
+
+
+
+
+
+
+
+
+INSERT INTO  `clinica`.`costoe` (
+`idcostoe` ,
+`descripcioncostoe` ,
+`montocostoe`
+)
+VALUES 
+(NULL ,  'Desde sutura 11 hasta sutura 20',  '300'), 
+(NULL ,  'Desde sutura 21 hasta sutura 25',  '400'),
+(NULL ,  'Desde sutura 26 hasta sutura 30',  '500'),
+(NULL ,  'Férula Nasal Termoplástica',  '80'),
+(NULL ,  'Monocryl',  '80');
+
+
+
+
+
+INSERT INTO  `clinica`.`perfil` (
+`idperfil` ,
+`nombreperfil`
+)
+VALUES 
+(NULL ,  'Administradores'), 
+(NULL ,  'Perfil 1'),
+(NULL ,  'Perfil 2'),
+(NULL ,  'Perfil 3'),
+(NULL ,  'Perfil 4');
+
+
+
+
+
+
+
+
+INSERT INTO  `clinica`.`insumo` (
+`idinsumo` ,
+`nombreinsumo` ,
+`descripcioninsumo` ,
+`tipoinsumo` ,
+`cantidadinsumo` ,
+`costoxunidad`
+)
+VALUES 
+(NULL ,  'Adrenalina',  'Adrenalina',  '1',  '10',  '0.77'), 
+(NULL ,  'Atropina',  'Atropina',  '1',  '20',  '0.88'),
+(NULL ,  'Neostigmina',  'Neostigmina',  '1',  '40',  '1.33'),
+(NULL ,  'Ranitidina',  'Ranitidina',  '1',  '30',  '0.71'),
+(NULL ,  'Efedrina',  'Efedrina',  '1',  '50',  '6.48');
+
+
+
+
+
+
+
+
+
+
+INSERT INTO  `clinica`.`operacion` (
+`idoperacion` ,
+`pabellonoperacion` ,
+`fechaoperacion` ,
+`horaoperacion` ,
+`statusoperacion` ,
+`cedulapaciente` ,
+`fechapreoperacion` ,
+`totalpreoperacion` ,
+`observacionoperacion`
+)
+VALUES 
+(NULL ,  'A',  '2010-11-24',  '08:00:00',  'Reserva',  '19000000',  '2010-11-01',  '14000', NULL), 
+(NULL ,  'B',  '2010-11-23',  '10:00:00',  'Reserva',  '19000001',  '2010-11-02',  '15000', NULL),
+
+(NULL ,  'A',  NULL ,  '12:00:00',  'Presupuesto',  '19000002',  '2010-10-02',  '12600', NULL),
+(NULL ,  'B',  NULL ,  '14:00:00',  'Presupuesto',  '19000003',  '2010-10-04',  '13000', NULL),
+
+(NULL ,  'A',  '2010-10-13',  '16:00:00',  'Realizada',  '19000004',  '2010-10-22',  '11000', 'Operación realizada sin ningun problema'),
+(NULL ,  'B',  '2010-10-11',  '18:00:00',  'Realizada',  '19000000',  '2010-10-17',  '12400', 'Se realizó la operación sin inconvenientes'),
+
+(NULL ,  'A',  '2010-09-05',  '11:00:00',  'Cancelada',  '19000001',  '2010-09-13',  '13800', NULL),
+(NULL ,  'B',  '2010-09-08',  '13:00:00',  'Cancelada',  '19000002',  '2010-11-17',  '12900', NULL);
+
+
+
+
+
+
+
+INSERT INTO  `clinica`.`ceop` (
+`idoperacion` ,
+`idcostoe`
+)
+VALUES 
+('5',  '1'), 
+('6',  '2');
+
+
+
+
+
+
+
+
+INSERT INTO  `clinica`.`empleadoop` (
+`cedulaempleado` ,
+`idoperacion`
+)
+VALUES 
+('18000000',  '1'), 
+('18000001',  '1'),
+('18000000',  '2'),
+('18000002',  '2'),
+('18000003',  '5'),
+('18000004',  '5'),
+('18000005',  '6'),
+('18000001',  '6'),
+('18000000',  '7'),
+('18000004',  '8');
+
+
+
+
+
+
+
+
+INSERT INTO  `clinica`.`kitbasico` (
+`idinsumo` ,
+`idoperacion` ,
+`cantidadkit`
+)
+VALUES 
+('1',  '1',  '2'), 
+('1',  '2',  '3'),
+('2',  '5',  '1'),
+('3',  '6',  '4'),
+('4',  '7',  '1'),
+('5',  '8',  '5');
+
+
+
+
+
+
+INSERT INTO  `clinica`.`opertratamiento` (
+`idtratamiento` ,
+`idoperacion`
+)
+VALUES 
+('1',  '1'), 
+('2',  '2'),
+('3',  '5'),
+('4',  '6'),
+('5',  '7'),
+('1',  '8');
+
+
+
+
+
+
+
+
+INSERT INTO  `clinica`.`pernocta` (
+`idpernocta` ,
+`horaentradapernocta` ,
+`horasalidapernocta` ,
+`fechasalidapernocta` ,
+`recargopernocta` ,
+`cedulaempleado` ,
+`idoperacion`
+)
+VALUES 
+(NULL ,  '19:00:00',  '10:00:00',  '2010-10-14',  '800',  '18000003',  '5');
+
+
+
+
+
+
+
+
+
+
+INSERT INTO  `clinica`.`tiempoqop` (
+`idtiempoq` ,
+`idoperacion`
+)
+VALUES 
+('1',  '5'), 
+('2',  '6');
