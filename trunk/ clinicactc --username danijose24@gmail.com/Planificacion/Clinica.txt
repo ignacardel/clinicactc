@@ -1,3 +1,4 @@
+drop database clinica;
 create database clinica;
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 
@@ -224,38 +225,6 @@ CREATE INDEX fk_PERFILMODULO_EMPLEADO ON `Clinica`.`PERFILMODULO` (`cedulaemplea
 
 
 
--- -----------------------------------------------------
--- Table `Clinica`.`PACIENTE`
--- -----------------------------------------------------
-
-DROP TABLE IF EXISTS `Clinica`.`PACIENTE` ;
-
-
-
-CREATE  TABLE IF NOT EXISTS `Clinica`.`PACIENTE` (
-  
-`cedulapaciente` INT NOT NULL AUTO_INCREMENT ,
-  
-`nombrepaciente` VARCHAR(45) NOT NULL ,
-  
-`apellidopaciente` VARCHAR(45) NOT NULL ,
-  
-`direccionpaciente` VARCHAR(45) NOT NULL ,
-  
-`telefonopaciente` BIGINT NOT NULL ,
-  
-`fechanpaciente` DATE NOT NULL ,
-  
-
-PRIMARY KEY (`cedulapaciente`) )
-ENGINE = InnoDB;
-
-
-
-
-
-
-
 
 
 
@@ -278,30 +247,21 @@ CREATE  TABLE IF NOT EXISTS `Clinica`.`OPERACION` (
 `horaoperacion` TIME NULL ,
   
 `statusoperacion` VARCHAR(45) NOT NULL ,
-  
-`cedulapaciente` INT NOT NULL ,
-  
+    
 `fechapreoperacion` DATE NOT NULL ,
   
 `totalpreoperacion` INT NOT NULL ,
   
 `observacionoperacion` VARCHAR(45) NULL ,
   
+`nombrepacienteoperacion` VARCHAR(45) NOT NULL ,
 
-PRIMARY KEY (`idoperacion`) ,
-  
+`apellidopacienteperacion` varchar(45) NOT NULL ,
 
+`cedulapacienteoperacion` INT NOT NULL ,
 
-CONSTRAINT `fk_OPERACION_PACIENTE`
- FOREIGN KEY (`cedulapaciente` )
-    REFERENCES `Clinica`.`PACIENTE` (`cedulapaciente` )
- ON DELETE NO ACTION
- ON UPDATE NO ACTION)
-ENGINE = InnoDB;
-
-
-CREATE INDEX fk_OPERACION_PACIENTE ON `Clinica`.`OPERACION` (`cedulapaciente` ASC) ;
-
+PRIMARY KEY (`idoperacion`)); 
+ALTER TABLE  `operacion` ENGINE = INNODB;
 
 
 
