@@ -41,26 +41,6 @@ VALUES
 
 
 
-INSERT INTO  `clinica`.`paciente` (
-`cedulapaciente` ,
-`nombrepaciente` ,
-`apellidopaciente` ,
-`direccionpaciente` ,
-`telefonopaciente` ,
-`fechanpaciente`
-)
-VALUES 
-('19000000',  'Carmen',  'Perez',  'El Rosal',  '536752',  '1971-03-09'), 
-('19000001',  'Maritza',  'Hernandez',  'Mariche',  '4326754',  '1979-04-16'),
-('19000002',  'Juana',  'Paredes',  'Los Dos Caminos',  '536752',  '1975-10-11'),
-('19000003',  'Joana',  'Rondon',  'Altamira',  '536752',  '1978-07-23'),
-('19000004',  'Claudia',  'Alvarado',  'El Marques',  '536752',  '1981-06-18');
-
-
-
-
-
-
 
 INSERT INTO  `clinica`.`tratamiento` (
 `idtratamiento` ,
@@ -173,25 +153,25 @@ INSERT INTO  `clinica`.`operacion` (
 `fechaoperacion` ,
 `horaoperacion` ,
 `statusoperacion` ,
-`cedulapaciente` ,
 `fechapreoperacion` ,
 `totalpreoperacion` ,
-`observacionoperacion`
+`observacionoperacion` ,
+`nombrepacienteoperacion`,
+`apellidopacienteperacion`,
+`cedulapacienteoperacion`
 )
 VALUES 
-(NULL ,  'A',  '2010-11-24',  '08:00:00',  'Reserva',  '19000000',  '2010-11-01',  '14000', NULL), 
-(NULL ,  'B',  '2010-11-23',  '10:00:00',  'Reserva',  '19000001',  '2010-11-02',  '15000', NULL),
+(NULL ,  'A',  '2010-11-24',  '08:00:00',  'Reserva', '2010-11-01',  '14000', NULL,'Carmen','Perez','19000000'), 
+(NULL ,  'B',  '2010-11-23',  '10:00:00',  'Reserva', '2010-11-02',  '15000', NULL,'Maritza','Hernandez','19000001'),
 
-(NULL ,  'A',  NULL ,  '12:00:00',  'Presupuesto',  '19000002',  '2010-10-02',  '12600', NULL),
-(NULL ,  'B',  NULL ,  '14:00:00',  'Presupuesto',  '19000003',  '2010-10-04',  '13000', NULL),
+(NULL ,  'A',  NULL ,  '12:00:00',  'Presupuesto',  '2010-10-02',  '12600', NULL,'Juana','Paredes','19000002'),
+(NULL ,  'B',  NULL ,  '14:00:00',  'Presupuesto',  '2010-10-04',  '13000', NULL,'Marcos','Suarez','19000003'),
 
-(NULL ,  'A',  '2010-10-13',  '16:00:00',  'Realizada',  '19000004',  '2010-10-22',  '11000', 'Operación realizada sin ningun problema'),
-(NULL ,  'B',  '2010-10-11',  '18:00:00',  'Realizada',  '19000000',  '2010-10-17',  '12400', 'Se realizó la operación sin inconvenientes'),
+(NULL ,  'A',  '2010-10-13',  '16:00:00',  'Realizada',  '2010-10-22',  '11000', 'Operación realizada sin ningun problema','Claudia','Alvarado','19000004'),
+(NULL ,  'B',  '2010-10-11',  '18:00:00',  'Realizada',  '2010-10-17',  '12400', 'Se realizó la operación sin inconvenientes','Carmen','Perez','19000000'),
 
-(NULL ,  'A',  '2010-09-05',  '11:00:00',  'Cancelada',  '19000001',  '2010-09-13',  '13800', NULL),
-(NULL ,  'B',  '2010-09-08',  '13:00:00',  'Cancelada',  '19000002',  '2010-11-17',  '12900', NULL);
-
-
+(NULL ,  'A',  '2010-09-05',  '11:00:00',  'Cancelada',  '2010-09-13',  '13800', NULL,'Maritza','Hernandez','19000001'),
+(NULL ,  'B',  '2010-09-08',  '13:00:00',  'Cancelada',  '2010-11-17',  '12900', NULL,'Juana','Paredes','19000002');
 
 
 
