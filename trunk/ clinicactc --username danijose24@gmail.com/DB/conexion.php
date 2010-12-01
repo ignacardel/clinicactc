@@ -9,6 +9,5 @@ $conexion = mysql_connect($dbhost, $dbusuario, $dbpassword) or die ("<center>No 
 mysql_select_db($db, $conexion);
 if (!$conexion)
 echo "NO CONECTO";
-else echo "sos un crack";
 
 ?>
