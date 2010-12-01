@@ -1,11 +1,10 @@
 <?php
 session_start();
 	require_once ("../CLASSES/Panel.php");
-	include "DRIVER/validarSesion.php";
 	include "../DB/conexion.php";
 
 	
-	if ($sesion){
+	if ($_SESSION['cedula']){
 		$pnlmain = new Panel("../html/main.html");
 		$pnlmain->add("content",'Bienvenido al sitema ORMS');
 		$pnlmain->add("usuario",$_SESSION['nombre']);

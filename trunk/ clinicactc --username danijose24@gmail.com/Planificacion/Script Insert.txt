@@ -26,15 +26,15 @@ INSERT INTO  `clinica`.`empleado` (
 `idturno`
 )
 VALUES 
-('18213611',  'Daniel',  'Conde',  'Terrazas del Avila',  '1988-07-11',  '12345',  '2410461',  '1', NULL , NULL , NULL),
-('1',  'Ignacio',  'Cardenas',  'Chacao',  '1989-11-16',  '12345',  '2232343',  '1', NULL , NULL , NULL),
-('2',  'Solsire',  'Torres',  'Cumbres',  '1989-10-31',  '12345',  '2212333',  '1', NULL , NULL , NULL),
-('18000000',  'Pedro',  'Suarez',  'Chacaito',  '1983-03-06',  '12345',  '4123245',  '2', NULL , NULL , NULL),
-('18000001',  'Mario',  'Valencia',  'La Urbina',  '1980-09-14',  '12345',  '3245643',  '3', NULL , NULL , NULL),
-('18000002',  'Alejandra',  'Marcano',  'La trinidad',  '1981-12-10',  '12345',  '7873454',  '4', 1 , NULL , NULL),
-('18000003',  'Natalia',  'Gonzalez',  'El Llanito',  '1986-01-22',  '12345',  '2467945',  '5', 1 , NULL , NULL),
-('18000004',  'Jesus',  'Martinez',  'Las Mercedes',  '1983-02-15',  '12345',  '5628590',  '6', 2 , NULL , NULL),
-('18000005',  'Jesica',  'Pupilo',  'Santa Fe',  '1989-05-26',  '12345',  '8276894',  '7', NULL , 2 , NULL);
+('18213611',  'Daniel',  'Conde',  'Terrazas del Avila',  '1988-07-11',  '827ccb0eea8a706c4c34a16891f84e7b',  '2410461',  '1', NULL , NULL , NULL),
+('1',  'Ignacio',  'Cardenas',  'Chacao',  '1989-11-16',  '827ccb0eea8a706c4c34a16891f84e7b',  '2232343',  '1', NULL , NULL , NULL),
+('2',  'Solsire',  'Torres',  'Cumbres',  '1989-10-31',  '827ccb0eea8a706c4c34a16891f84e7b',  '2212333',  '1', NULL , NULL , NULL),
+('18000000',  'Pedro',  'Suarez',  'Chacaito',  '1983-03-06',  '827ccb0eea8a706c4c34a16891f84e7b',  '4123245',  '2', NULL , NULL , NULL),
+('18000001',  'Mario',  'Valencia',  'La Urbina',  '1980-09-14',  '827ccb0eea8a706c4c34a16891f84e7b',  '3245643',  '3', NULL , NULL , NULL),
+('18000002',  'Alejandra',  'Marcano',  'La trinidad',  '1981-12-10',  '827ccb0eea8a706c4c34a16891f84e7b',  '7873454',  '4', 1 , NULL , NULL),
+('18000003',  'Natalia',  'Gonzalez',  'El Llanito',  '1986-01-22',  '827ccb0eea8a706c4c34a16891f84e7b',  '2467945',  '5', 1 , NULL , NULL),
+('18000004',  'Jesus',  'Martinez',  'Las Mercedes',  '1983-02-15',  '827ccb0eea8a706c4c34a16891f84e7b',  '5628590',  '6', 2 , NULL , NULL),
+('18000005',  'Jesica',  'Pupilo',  'Santa Fe',  '1989-05-26',  '827ccb0eea8a706c4c34a16891f84e7b',  '8276894',  '7', NULL , 2 , NULL);
 
 
 
