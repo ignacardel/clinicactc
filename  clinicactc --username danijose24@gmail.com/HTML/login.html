@@ -4,11 +4,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Clínica Medicina Estética Dra. Eva Plaz Blanco</title>
 <link href="../css/style.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="../js/prototype.js"></script>
+<script type="text/javascript" src="../js/validacionesDaniel.js"></script>
 <link rel="shortcut icon" href="../imagenes/icono.gif">
 <style type="text/css">
 <!--
 #wrap #main #content1 #form1 table tr td {
 	color: #000;
+}
+#wrap #main #content1 #form1 table tr td #error {
+	color: #F00;
 }
 -->
 </style>
@@ -25,19 +30,25 @@
 <div id="main">
   <div id="content1">
     <form id="form1" method="post" action="">
-      <table width="708" border="0">
+      <table width="640" border="0">
         <tr>
-          <td width="244" align="right">Cedula: </td>
-          <td width="454"><input type="text" name="textfield" id="textfield" /></td>
+          <td width="243" align="right">Cedula: </td>
+          <td width="360"><input type="text" name="usuario" id="usuario" /></td>
         </tr>
         <tr>
           <td height="45" align="right"><label>Contrase&ntilde;a: </label></td>
-          <td><input type="text" name="textfield2" id="textfield2" /></td>
+          <td><input type="password" name="password" id="password" /></td>
         </tr>
+        <tr>
+          <td height="13" colspan="2" align="center"><div id="error" >
+            
+          </div></td>
+          </tr>
       </table>
       <table width="621" border="0">
         <tr>
-          <td width="670" align="center"><input type="submit" name="button" id="button" value="Enviar" /></td>
+          <td align="center"><input type="button" name="button" id="button" value="Entrar" onclick="ValidarLogin()" />
+            </td>
         </tr>
       </table>
     </form>
