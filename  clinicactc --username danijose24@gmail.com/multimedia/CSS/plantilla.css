@@ -1,0 +1,61 @@
+@charset "utf-8";
+/* CSS Document */
+
+#margen {width:941px; margin:10px auto; background:#FFF; border: #5B9DBF double}
+#header { height:170px; width:900}
+#logo #sitename {
+	font-size: 36px;
+	color: #000000;
+	display: block;
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #C6C6C6;
+	}
+	
+#margen #header #logo {
+	width: 330px;
+	padding-top: 50px;
+	padding-left: 50px;
+	height: 60px;
+	float: left;
+	background:url(../IMAGENES/Logo.png) no-repeat;
+	border:#5B9DBF dotted;
+	
+}
+#margen #header #acceso {
+	width: 210px;
+	padding-top: 1px;
+	padding-left: 1px;
+	margin-left: 420px;
+	margin-right:1px;
+	height: 20px;
+	font:Verdana, Geneva, sans-serif;
+	font-size:18px;
+	text-align: left;
+
+	
+}
+#margen #header #login {
+   width: 200px;
+	padding-right: 15px;
+	padding-top: 1px;
+	margin-right: 3px;
+	height: 20px;
+	font:Verdana, Geneva, sans-serif;
+	font-size:10px;
+	text-align: left;
+	
+	
+	}
+
+#margen #content {}
+#margen #menuLogin {}
+#margen #menu {}
+#margen #footer {
+	background: url(../imagenes/footer.png) no-repeat;
+	height: 65px;
+	}
+	
+#position {}
+#mouseon {}
